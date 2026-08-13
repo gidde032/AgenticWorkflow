@@ -47,5 +47,5 @@ as a built-in aren't in scope — see the "Model" section of the README.
 
 ## Conduct
 
-Be direct, be kind, bring evidence. Disagreement about workflow is expected and
-welcome; that's how the workflow improves.
+Be direct, be reasonably polite, bring evidence. Disagreement about the workflow is expected and
+welcome, that's how it improves.
