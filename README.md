@@ -1,4 +1,6 @@
-# agentic-workflow
+# Agentic Workflow
+
+![Agentic workflow landing splash](docs/assets/agenticworkflowsplash.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-12-green.svg)](#skills)
@@ -50,7 +52,7 @@ Here's what a fresh-project run looks like end to end:
 
 From there the per-phase loop (`agentic-phase-workflow`) takes over, and the cross-cutting skills (memory, cost, review, verification, evolution) are available throughout. An entire phase can be implemented through subagent review and repair, but consequential steps like spec approval, review acceptance, gate changes, merges, and releases stop for you.
 
-> **Want proof it works?** This repository itself was run through the loop; browse its [Issues](https://github.com/gidde032/agentic-workflow/issues), milestones, and pull requests to see the same workflow in practice.
+> **Want proof it works?** This repository itself was run through the loop; browse its [Issues](https://github.com/gidde032/AgenticWorkflow/issues), milestones, and pull requests to see the same workflow in practice.
 
 ![Bootstrap run showing the profile and spec approval checkpoints, governance setup, quality gates, and first draft PR](docs/assets/bootstrap-run.gif)
 
