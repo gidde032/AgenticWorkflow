@@ -1,0 +1,62 @@
+[
+  {
+    "query": "harden this brief so a cheaper session does not skip the gates",
+    "should_trigger": true
+  },
+  {
+    "query": "which tier should run this task",
+    "should_trigger": true
+  },
+  {
+    "query": "the agent keeps trusting the docs instead of verifying",
+    "should_trigger": true
+  },
+  {
+    "query": "a cheaper session fixed the symptom but not the actual contract",
+    "should_trigger": true
+  },
+  {
+    "query": "when should a weaker session escalate to me instead of guessing",
+    "should_trigger": true
+  },
+  {
+    "query": "this session quietly ran a subset of the tests and did not say so",
+    "should_trigger": true
+  },
+  {
+    "query": "what do cheaper models reliably get wrong",
+    "should_trigger": true
+  },
+  {
+    "query": "which model is cheapest for my API workload",
+    "should_trigger": false
+  },
+  {
+    "query": "why is this session so expensive",
+    "should_trigger": false
+  },
+  {
+    "query": "run three reviewers on this PR",
+    "should_trigger": false
+  },
+  {
+    "query": "set up the project from scratch",
+    "should_trigger": false
+  },
+  {
+    "query": "fine-tune a small model on my dataset",
+    "should_trigger": false
+  },
+  {
+    "query": "compare Llama and Mistral benchmarks",
+    "should_trigger": false
+  },
+  {
+    "query": "explain what quantisation means",
+    "should_trigger": false
+  },
+  {
+    "query": "write a prompt for a chatbot",
+    "should_trigger": false
+  }
+]

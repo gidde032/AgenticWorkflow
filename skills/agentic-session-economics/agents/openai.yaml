@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Session Economics"
+  short_description: "Keep session spend proportional to output"
+  default_prompt: "Use $agentic-session-economics to diagnose where this session's cost is going and apply the standing cost rules."

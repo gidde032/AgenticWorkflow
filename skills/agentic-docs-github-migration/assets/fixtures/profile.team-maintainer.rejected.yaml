@@ -1,0 +1,115 @@
+artifact_retention:
+  backup_directory: /tmp/work/backup
+  commit_full_ledger: false
+  full_ledger_local_only: true
+  pr_summary:
+    enabled: true
+    include_full_ledger: false
+    public_safe: true
+  profile_local_only: true
+  working_directory: /tmp/work
+automation_authority:
+  allowed:
+    add_templates_and_ci: true
+    audit_documentation: true
+    commit_changes: true
+    create_backup: true
+    create_issues: true
+    create_labels_and_milestone: true
+    edit_documentation: true
+    open_draft_pull_requests: true
+    push_approved_branches: true
+    run_verification: true
+  prohibited_without_new_approval:
+  - merge_pull_request
+  - tag_or_create_release
+  - change_repository_visibility
+  - delete_branches
+  - weaken_quality_gates
+  - destructive_cleanup
+  - change_product_scope
+  - publish_internal_continuity_documents
+  - combine_unpublished_product_work_with_migration
+documentation:
+  create: []
+  do_not_create: []
+  immutable_history: []
+  internal_docs_policy: local-only
+  local_internal_authorities: {}
+  public_authorities: {}
+  remove_or_archive: []
+  update: []
+git_preflight:
+  combine_product_work_with_migration: false
+  snapshot:
+    captured_on: null
+    head_sha: null
+    local_default_ahead: null
+    local_default_behind: null
+    working_tree: null
+  unpublished_history_strategy: none
+  verify_snapshot_before_action: true
+github:
+  integrations: {}
+  issue_creation: enabled
+  labels: []
+  milestone_strategy: single-milestone
+  pull_request_mode: draft
+  ruleset:
+    desired_rules: []
+    enforcement_status: unknown
+    target: main
+license:
+  copyright_holder: maintainer
+  type: MIT
+  year: 2026
+migration:
+  branch: docs/github-refresh
+  checkpoint_policy:
+    exceptional_prerequisite_only: true
+    final_draft_pr_review: true
+    merge_automatically: false
+    profile_ratification: true
+  milestone: m1
+  objective: consolidate documentation authorities
+planning_migration:
+  audit_sources:
+  - ROADMAP.md
+  disposition_ledger_path: /tmp/work/ledger.yaml
+  require_complete_disposition_ledger: true
+  require_strict_validation_before_pr: true
+  require_strict_validation_before_writes: true
+profile_version: 1
+project:
+  current_visibility: private
+  default_branch: main
+  github_repository: owner/example
+  intended_visibility: private
+  local_path: /tmp/example
+  maintainer_model: team
+  name: example
+  product_status: active
+  remote_url: https://github.com/owner/example
+public_readiness_audit:
+  checks: []
+  enabled: false
+quality:
+  generated_drift_check: null
+  required_check_names: []
+  required_commands:
+  - pytest -q
+  setup: null
+ratification:
+  approved_by: maintainer
+  approved_on: '2026-01-01'
+  status: approved
+safety:
+  disposable_validation_root: null
+  prohibited_data: []
+  project_specific_boundaries:
+  - no credentials in tracked files
+  sensitive_paths_or_patterns: []
+visibility:
+  allow_automatic_visibility_change: false
+  current: private
+  remain_private: true

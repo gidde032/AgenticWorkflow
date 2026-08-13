@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Driving Weaker Models"
+  short_description: "Get strong results from cheaper model tiers"
+  default_prompt: "Use $agentic-driving-weaker-models to harden this brief for a cheaper session and set its escalation triggers."

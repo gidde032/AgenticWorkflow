@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Collaboration Cadence"
+  short_description: "Set the human-in-the-loop authority model"
+  default_prompt: "Use $agentic-collaboration-cadence to establish the authorization envelope for this work and decide where the checkpoints belong."

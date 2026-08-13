@@ -1,0 +1,19 @@
+{
+  "name": "agentic-workflow",
+  "version": "3.0.0",
+  "description": "A twelve-skill plugin for solo-maintainer agentic development workflows — from project bootstrap through phase delivery, review orchestration, and workflow evolution.",
+  "author": {
+    "name": "Finn Gidden",
+    "email": "gidde032@umn.edu",
+    "url": "https://github.com/gidde032"
+  },
+  "homepage": "https://github.com/gidde032/agentic-workflow",
+  "repository": "https://github.com/gidde032/agentic-workflow",
+  "license": "MIT",
+  "keywords": [
+    "agentic",
+    "workflow",
+    "solo-maintainer",
+    "skills"
+  ]
+}

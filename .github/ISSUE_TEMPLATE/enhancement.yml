@@ -1,0 +1,26 @@
+name: Enhancement
+description: A new skill, or an improvement to an existing one.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: gap
+    attributes:
+      label: What gap or friction does this address?
+      description: What can't be done well today, and where does it hurt?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence this is real
+      description: >-
+        This workflow changes on evidence, not theory. Point to a lived failure,
+        a recurring pattern, or a concrete example — not a hypothetical.
+    validations:
+      required: true

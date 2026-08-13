@@ -1,0 +1,62 @@
+[
+  {
+    "query": "$agentic-docs-github-migration profile",
+    "should_trigger": true
+  },
+  {
+    "query": "$agentic-docs-github-migration execute /Users/me/work/project-profile.yaml",
+    "should_trigger": true
+  },
+  {
+    "query": "run the documentation and GitHub migration on this repository",
+    "should_trigger": true
+  },
+  {
+    "query": "migrate this repo's scattered planning docs into Issues and milestones",
+    "should_trigger": true
+  },
+  {
+    "query": "audit this existing repo and prepare a ratifiable migration profile",
+    "should_trigger": true
+  },
+  {
+    "query": "set up this brand new project from scratch",
+    "should_trigger": false
+  },
+  {
+    "query": "merged, what do I close out",
+    "should_trigger": false
+  },
+  {
+    "query": "update the README to mention the new flag",
+    "should_trigger": false
+  },
+  {
+    "query": "create an issue for this bug",
+    "should_trigger": false
+  },
+  {
+    "query": "our docs are a bit stale, tidy them up",
+    "should_trigger": false
+  },
+  {
+    "query": "where should the handoff live",
+    "should_trigger": false
+  },
+  {
+    "query": "move this file into the docs folder",
+    "should_trigger": false
+  },
+  {
+    "query": "add a CI workflow that runs the tests",
+    "should_trigger": false
+  },
+  {
+    "query": "what should we build next",
+    "should_trigger": false
+  },
+  {
+    "query": "explain what a monorepo is",
+    "should_trigger": false
+  }
+]

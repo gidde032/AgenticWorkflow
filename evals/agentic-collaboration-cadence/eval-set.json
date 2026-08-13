@@ -1,0 +1,62 @@
+[
+  {
+    "query": "how often should the agent stop and check in with me",
+    "should_trigger": true
+  },
+  {
+    "query": "the agent keeps asking permission for every tiny step",
+    "should_trigger": true
+  },
+  {
+    "query": "the issue is ratified, does that mean it can start writing code",
+    "should_trigger": true
+  },
+  {
+    "query": "what should the agent be allowed to do without asking",
+    "should_trigger": true
+  },
+  {
+    "query": "define the authorization envelope for this migration",
+    "should_trigger": true
+  },
+  {
+    "query": "can the agent merge this PR on its own",
+    "should_trigger": true
+  },
+  {
+    "query": "I want it to work in the background and report at the seams",
+    "should_trigger": true
+  },
+  {
+    "query": "decompose this into work packets",
+    "should_trigger": false
+  },
+  {
+    "query": "run the independent reviewers",
+    "should_trigger": false
+  },
+  {
+    "query": "how much is this session costing",
+    "should_trigger": false
+  },
+  {
+    "query": "where does this lesson belong",
+    "should_trigger": false
+  },
+  {
+    "query": "write the regression test",
+    "should_trigger": false
+  },
+  {
+    "query": "what is a good git commit message convention",
+    "should_trigger": false
+  },
+  {
+    "query": "explain OAuth device flow",
+    "should_trigger": false
+  },
+  {
+    "query": "rename this variable everywhere",
+    "should_trigger": false
+  }
+]

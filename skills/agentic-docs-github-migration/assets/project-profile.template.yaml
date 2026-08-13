@@ -1,0 +1,126 @@
+profile_version: 1
+
+ratification:
+  status: draft
+  approved_by: null
+  approved_on: null
+
+project:
+  name: null
+  local_path: null
+  github_repository: null
+  remote_url: null
+  default_branch: main
+  current_visibility: private
+  intended_visibility: private
+  maintainer_model: solo
+  product_status: null
+
+migration:
+  branch: docs/github-refresh
+  milestone: null
+  objective: null
+  checkpoint_policy:
+    profile_ratification: true
+    exceptional_prerequisite_only: true
+    final_draft_pr_review: true
+    merge_automatically: false
+
+git_preflight:
+  snapshot:
+    captured_on: null
+    head_sha: null
+    working_tree: null
+    local_default_ahead: null
+    local_default_behind: null
+  verify_snapshot_before_action: true
+  unpublished_history_strategy: null
+  combine_product_work_with_migration: false
+
+documentation:
+  public_authorities: {}
+  local_internal_authorities: {}
+  immutable_history: []
+  create: []
+  update: []
+  remove_or_archive: []
+  do_not_create: []
+  internal_docs_policy: null
+
+planning_migration:
+  audit_sources: []
+  disposition_ledger_path: null
+  require_complete_disposition_ledger: true
+  require_strict_validation_before_writes: true
+  require_strict_validation_before_pr: true
+
+github:
+  labels: []
+  milestone_strategy: null
+  issue_creation: enabled
+  pull_request_mode: draft
+  ruleset:
+    target: main
+    desired_rules: []
+    enforcement_status: unknown
+  integrations: {}
+
+quality:
+  setup: null
+  required_commands: []
+  required_check_names: []
+  generated_drift_check: null
+
+safety:
+  sensitive_paths_or_patterns: []
+  prohibited_data: []
+  disposable_validation_root: null
+  project_specific_boundaries: []
+
+license:
+  type: null
+  copyright_holder: null
+  year: null
+
+visibility:
+  current: private
+  remain_private: true
+  allow_automatic_visibility_change: false
+
+public_readiness_audit:
+  enabled: false
+  checks: []
+
+artifact_retention:
+  working_directory: null
+  backup_directory: null
+  profile_local_only: true
+  full_ledger_local_only: true
+  commit_full_ledger: false
+  pr_summary:
+    enabled: true
+    public_safe: true
+    include_full_ledger: false
+
+automation_authority:
+  allowed:
+    create_backup: true
+    audit_documentation: true
+    edit_documentation: true
+    create_labels_and_milestone: true
+    create_issues: true
+    add_templates_and_ci: true
+    run_verification: true
+    commit_changes: true
+    push_approved_branches: true
+    open_draft_pull_requests: true
+  prohibited_without_new_approval:
+    - merge_pull_request
+    - tag_or_create_release
+    - change_repository_visibility
+    - delete_branches
+    - weaken_quality_gates
+    - destructive_cleanup
+    - change_product_scope
+    - publish_internal_continuity_documents
+    - combine_unpublished_product_work_with_migration

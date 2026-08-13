@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Phase Workflow"
+  short_description: "Run the Issue-backed delivery loop"
+  default_prompt: "Use $agentic-phase-workflow to run this work from owning Issue through draft PR, independent review, repair, and closeout."

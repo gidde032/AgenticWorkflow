@@ -1,0 +1,62 @@
+[
+  {
+    "query": "decompose this approved issue into bounded work packets",
+    "should_trigger": true
+  },
+  {
+    "query": "which parts of this should the parent keep versus delegate",
+    "should_trigger": true
+  },
+  {
+    "query": "two agents need to work on this without colliding, how do I assign files",
+    "should_trigger": true
+  },
+  {
+    "query": "the implementer says it is done, how do I verify before accepting",
+    "should_trigger": true
+  },
+  {
+    "query": "integrate these packets into coherent commits and open the draft PR",
+    "should_trigger": true
+  },
+  {
+    "query": "a subagent timed out halfway through, what do I do",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I stop implementers from touching unrelated user changes",
+    "should_trigger": true
+  },
+  {
+    "query": "run the independent review pass on this PR",
+    "should_trigger": false
+  },
+  {
+    "query": "the product direction is still unsettled",
+    "should_trigger": false
+  },
+  {
+    "query": "how much will this session cost me",
+    "should_trigger": false
+  },
+  {
+    "query": "write the failing test before the fix",
+    "should_trigger": false
+  },
+  {
+    "query": "set up the project from day one",
+    "should_trigger": false
+  },
+  {
+    "query": "explain what a monorepo is",
+    "should_trigger": false
+  },
+  {
+    "query": "fix this TypeScript type error",
+    "should_trigger": false
+  },
+  {
+    "query": "what is the best way to learn Rust",
+    "should_trigger": false
+  }
+]

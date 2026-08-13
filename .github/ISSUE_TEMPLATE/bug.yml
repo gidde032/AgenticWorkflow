@@ -1,0 +1,29 @@
+name: Bug
+description: A skill, script, or documented behavior does not work as described.
+labels: ["bug"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Affected skill or file
+      placeholder: e.g. agentic-verification-discipline, or scripts/validate_profile.py
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What the skill/doc says should happen
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened (with evidence)
+      description: Commands, output, or a transcript. Evidence over description.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Agent / host
+      placeholder: e.g. Claude Code (Opus 4.8) / macOS, or Codex

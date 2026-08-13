@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Workflow Evolution"
+  short_description: "Improve the workflow through evidence"
+  default_prompt: "Use $agentic-workflow-evolution to weigh the evidence for this workflow change and choose the narrowest adoption level."

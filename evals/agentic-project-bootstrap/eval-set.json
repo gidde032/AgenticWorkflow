@@ -1,0 +1,62 @@
+[
+  {
+    "query": "starting a new repo for a recipe manager, want the whole workflow stood up",
+    "should_trigger": true
+  },
+  {
+    "query": "bootstrap this repo with a spec, gates and GitHub issues",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to adopt this agentic workflow on an existing project",
+    "should_trigger": true
+  },
+  {
+    "query": "day one setup for a new CLI project, what do I create first",
+    "should_trigger": true
+  },
+  {
+    "query": "set up the workflow on this repo",
+    "should_trigger": true
+  },
+  {
+    "query": "stand up a spec, memory files, quality gates and a review cadence together",
+    "should_trigger": true
+  },
+  {
+    "query": "instantiate the agentic workflow here",
+    "should_trigger": true
+  },
+  {
+    "query": "not sure if I should build this or just use an off-the-shelf tool",
+    "should_trigger": false
+  },
+  {
+    "query": "merged the PR, what do I close out",
+    "should_trigger": false
+  },
+  {
+    "query": "spawn three independent reviewers on this diff",
+    "should_trigger": false
+  },
+  {
+    "query": "my session costs are ballooning, how do I cut them",
+    "should_trigger": false
+  },
+  {
+    "query": "where should I record a lesson I learned mid-release",
+    "should_trigger": false
+  },
+  {
+    "query": "write a python function to parse ISO 8601 dates",
+    "should_trigger": false
+  },
+  {
+    "query": "explain the difference between git rebase and git merge",
+    "should_trigger": false
+  },
+  {
+    "query": "suggest a better name for this variable",
+    "should_trigger": false
+  }
+]

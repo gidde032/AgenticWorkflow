@@ -1,0 +1,27 @@
+{
+  "name": "gidde032-plugins",
+  "owner": {
+    "name": "Finn Gidden",
+    "email": "gidde032@umn.edu",
+    "url": "https://github.com/gidde032"
+  },
+  "description": "Solo-maintainer agentic development workflow plugins.",
+  "plugins": [
+    {
+      "name": "agentic-workflow",
+      "source": "./",
+      "description": "A twelve-skill plugin for solo-maintainer agentic development workflows — from project bootstrap through phase delivery, review orchestration, and workflow evolution.",
+      "version": "3.0.0",
+      "author": {
+        "name": "Finn Gidden"
+      },
+      "license": "MIT",
+      "keywords": [
+        "agentic",
+        "workflow",
+        "solo-maintainer",
+        "skills"
+      ]
+    }
+  ]
+}

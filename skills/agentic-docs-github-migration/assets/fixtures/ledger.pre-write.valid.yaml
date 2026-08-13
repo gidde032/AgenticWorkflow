@@ -1,0 +1,33 @@
+ledger_version: 1
+project:
+  name: example
+  repository_root: null
+  audited_head_sha: '0000000000000000000000000000000000000000'
+audit:
+  generated_on: '2026-01-01'
+  complete: true
+  auditor: migration-agent
+sources:
+- id: SOURCE-001
+  path: ROADMAP.md
+  scope: entire-file
+  fingerprint: sha256:e9f34b40b31156665c8b5101b06576ade68556836b5a57ad5a6f8b1a940880d5
+  scan_complete: true
+  finding_ids:
+  - FINDING-001
+findings:
+- id: FINDING-001
+  summary: pattern import is unfinished
+  source_refs:
+  - source_id: SOURCE-001
+    location: line 3
+  category: roadmap-candidate
+  status: ported_to_issue
+  evidence: []
+  authoritative_destination: null
+  issue:
+    proposed_title: Finish pattern import
+    number: null
+    url: null
+  rationale: carried forward
+  public_safe_summary: pattern import tracked as an issue

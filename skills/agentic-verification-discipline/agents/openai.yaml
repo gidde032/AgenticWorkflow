@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Verification Discipline"
+  short_description: "Turn findings into enforceable regression evidence"
+  default_prompt: "Use $agentic-verification-discipline to convert these accepted findings into fail-before-fix regression tests and enforceable gates."

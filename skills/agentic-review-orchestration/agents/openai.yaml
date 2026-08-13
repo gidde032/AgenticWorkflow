@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Review Orchestration"
+  short_description: "Run independent multi-agent code review"
+  default_prompt: "Use $agentic-review-orchestration to run contextless independent reviewers against this draft PR and triage their findings."

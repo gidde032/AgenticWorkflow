@@ -1,0 +1,33 @@
+audit:
+  auditor: migration-agent
+  complete: false
+  generated_on: '2026-01-01'
+findings:
+- authoritative_destination: null
+  category: roadmap-candidate
+  evidence: []
+  id: FINDING-001
+  issue:
+    number: null
+    proposed_title: Finish pattern import
+    url: null
+  public_safe_summary: pattern import tracked as an issue
+  rationale: needs a scope call
+  source_refs:
+  - location: line 3
+    source_id: SOURCE-001
+  status: awaiting_human_decision
+  summary: pattern import is unfinished
+ledger_version: 1
+project:
+  audited_head_sha: '0000000000000000000000000000000000000000'
+  name: example
+  repository_root: null
+sources:
+- finding_ids:
+  - FINDING-001
+  fingerprint: sha256:e9f34b40b31156665c8b5101b06576ade68556836b5a57ad5a6f8b1a940880d5
+  id: SOURCE-001
+  path: ROADMAP.md
+  scan_complete: true
+  scope: entire-file

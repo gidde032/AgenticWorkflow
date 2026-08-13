@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Product Discovery"
+  short_description: "Shape ideas into ratified product contracts"
+  default_prompt: "Use $agentic-product-discovery to refine this idea into a ratified product and design contract."

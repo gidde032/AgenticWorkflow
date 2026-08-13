@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Implementation Orchestration"
+  short_description: "Delegate approved Issue-backed implementation safely"
+  default_prompt: "Use $agentic-implementation-orchestration to decompose this approved Issue-backed implementation into bounded packets, preserve workspace state, integrate coherent commits, and verify the draft PR."

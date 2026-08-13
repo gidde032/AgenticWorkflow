@@ -1,0 +1,26 @@
+name: fixtures
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  migration-fixtures:
+    name: migration-fixtures
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run migration validator fixtures
+        run: bash skills/agentic-docs-github-migration/scripts/run_fixtures.sh

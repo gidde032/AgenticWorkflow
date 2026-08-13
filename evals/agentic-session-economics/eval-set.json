@@ -1,0 +1,62 @@
+[
+  {
+    "query": "why is this session so expensive",
+    "should_trigger": true
+  },
+  {
+    "query": "my usage is going fast and I do not know where it went",
+    "should_trigger": true
+  },
+  {
+    "query": "should I full-read this 600 line file or just the part I need",
+    "should_trigger": true
+  },
+  {
+    "query": "when should I start a fresh session",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I keep token costs down on doc updates",
+    "should_trigger": true
+  },
+  {
+    "query": "should this mechanical edit run on a cheaper tier",
+    "should_trigger": true
+  },
+  {
+    "query": "our doc updates are eating a whole session each release",
+    "should_trigger": true
+  },
+  {
+    "query": "which Claude model is cheapest for my API workload",
+    "should_trigger": false
+  },
+  {
+    "query": "harden this brief so a weaker model does not skip gates",
+    "should_trigger": false
+  },
+  {
+    "query": "brief the reviewers for this PR",
+    "should_trigger": false
+  },
+  {
+    "query": "decompose this issue into packets",
+    "should_trigger": false
+  },
+  {
+    "query": "what does this AWS bill line item mean",
+    "should_trigger": false
+  },
+  {
+    "query": "how much does GPT cost per million tokens",
+    "should_trigger": false
+  },
+  {
+    "query": "optimise this SQL query for speed",
+    "should_trigger": false
+  },
+  {
+    "query": "reduce the bundle size of this web app",
+    "should_trigger": false
+  }
+]

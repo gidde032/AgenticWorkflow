@@ -1,0 +1,6 @@
+[
+  {
+    "query": "Use the agentic-verification-discipline skill to convert these accepted review findings into fail-before-fix regression tests and record the red/green evidence in the pull request.",
+    "should_trigger": true
+  }
+]

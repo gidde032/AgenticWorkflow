@@ -1,0 +1,115 @@
+profile_version: 1
+ratification:
+  status: approved
+  approved_by: maintainer
+  approved_on: '2026-01-01'
+project:
+  name: example
+  local_path: /tmp/example
+  github_repository: owner/example
+  remote_url: https://github.com/owner/example
+  default_branch: main
+  current_visibility: private
+  intended_visibility: private
+  maintainer_model: solo
+  product_status: active
+migration:
+  branch: docs/github-refresh
+  milestone: m1
+  objective: consolidate documentation authorities
+  checkpoint_policy:
+    profile_ratification: true
+    exceptional_prerequisite_only: true
+    final_draft_pr_review: true
+    merge_automatically: false
+git_preflight:
+  snapshot:
+    captured_on: null
+    head_sha: null
+    working_tree: null
+    local_default_ahead: null
+    local_default_behind: null
+  verify_snapshot_before_action: true
+  unpublished_history_strategy: none
+  combine_product_work_with_migration: false
+documentation:
+  public_authorities: {}
+  local_internal_authorities: {}
+  immutable_history: []
+  create: []
+  update: []
+  remove_or_archive: []
+  do_not_create: []
+  internal_docs_policy: local-only
+planning_migration:
+  audit_sources:
+  - ROADMAP.md
+  disposition_ledger_path: /tmp/work/ledger.yaml
+  require_complete_disposition_ledger: true
+  require_strict_validation_before_writes: true
+  require_strict_validation_before_pr: true
+github:
+  labels: []
+  milestone_strategy: single-milestone
+  issue_creation: enabled
+  pull_request_mode: draft
+  ruleset:
+    target: main
+    desired_rules: []
+    enforcement_status: unknown
+  integrations: {}
+quality:
+  setup: null
+  required_commands:
+  - pytest -q
+  required_check_names: []
+  generated_drift_check: null
+safety:
+  sensitive_paths_or_patterns: []
+  prohibited_data: []
+  disposable_validation_root: null
+  project_specific_boundaries:
+  - no credentials in tracked files
+license:
+  type: MIT
+  copyright_holder: maintainer
+  year: 2026
+visibility:
+  current: private
+  remain_private: true
+  allow_automatic_visibility_change: false
+public_readiness_audit:
+  enabled: false
+  checks: []
+artifact_retention:
+  working_directory: /tmp/work
+  backup_directory: /tmp/work/backup
+  profile_local_only: true
+  full_ledger_local_only: true
+  commit_full_ledger: false
+  pr_summary:
+    enabled: true
+    public_safe: true
+    include_full_ledger: false
+automation_authority:
+  allowed:
+    create_backup: true
+    audit_documentation: true
+    edit_documentation: true
+    create_labels_and_milestone: true
+    create_issues: true
+    add_templates_and_ci: true
+    run_verification: true
+    commit_changes: true
+    push_approved_branches: true
+    open_draft_pull_requests: true
+  prohibited_without_new_approval:
+  - merge_pull_request
+  - tag_or_create_release
+  - change_repository_visibility
+  - delete_branches
+  - weaken_quality_gates
+  - destructive_cleanup
+  - change_product_scope
+  - publish_internal_continuity_documents
+  - combine_unpublished_product_work_with_migration

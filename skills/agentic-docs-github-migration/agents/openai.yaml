@@ -1,0 +1,10 @@
+interface:
+  display_name: "Agentic Documentation and GitHub Migration"
+  short_description: "Migrate project docs and GitHub governance"
+  default_prompt: "Use $agentic-docs-github-migration profile to audit this existing project and prepare a ratifiable migration profile."
+
+policy:
+  # Finite-use workflow: a repository is migrated once, so an implicit
+  # trigger could only ever be a false positive. Explicit $invocation
+  # still works. Keep in sync with the activation guard in SKILL.md.
+  allow_implicit_invocation: false

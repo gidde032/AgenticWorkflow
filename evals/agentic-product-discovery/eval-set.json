@@ -1,0 +1,62 @@
+[
+  {
+    "query": "not sure whether to build this myself or use an existing tool",
+    "should_trigger": true
+  },
+  {
+    "query": "help me work out what we should actually build here",
+    "should_trigger": true
+  },
+  {
+    "query": "explore a few UI directions for this dashboard",
+    "should_trigger": true
+  },
+  {
+    "query": "compare palette and typography options for the app",
+    "should_trigger": true
+  },
+  {
+    "query": "who are the users and what is the core workflow",
+    "should_trigger": true
+  },
+  {
+    "query": "turn this rough idea into a ratified product and design contract",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to settle scope and non-goals before any code",
+    "should_trigger": true
+  },
+  {
+    "query": "the spec is ratified, start phase 1",
+    "should_trigger": false
+  },
+  {
+    "query": "stand up the whole workflow on this new repo",
+    "should_trigger": false
+  },
+  {
+    "query": "should the deferred-idea list live in the spec or get filed as Issues",
+    "should_trigger": false
+  },
+  {
+    "query": "review this diff for a security bug",
+    "should_trigger": false
+  },
+  {
+    "query": "write a README for this CLI",
+    "should_trigger": false
+  },
+  {
+    "query": "implement the login form from the mockup",
+    "should_trigger": false
+  },
+  {
+    "query": "what is the most popular CSS framework right now",
+    "should_trigger": false
+  },
+  {
+    "query": "refactor this function to reduce nesting",
+    "should_trigger": false
+  }
+]

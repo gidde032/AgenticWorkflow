@@ -1,0 +1,62 @@
+[
+  {
+    "query": "local pytest passes but the required check on GitHub is red",
+    "should_trigger": true
+  },
+  {
+    "query": "a reviewer found a real bug in the date parser, I want the failing test first",
+    "should_trigger": true
+  },
+  {
+    "query": "our coverage floor keeps failing in CI but passes locally",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to lower the coverage gate from 85 to 80 for this release",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I stop importorskip silently dropping tests",
+    "should_trigger": true
+  },
+  {
+    "query": "set up a required status check on the default branch",
+    "should_trigger": true
+  },
+  {
+    "query": "where should this regression test live",
+    "should_trigger": true
+  },
+  {
+    "query": "write a test plan for the CSV importer",
+    "should_trigger": false
+  },
+  {
+    "query": "PR 88 is integrated and green locally, ready to throw reviewers at it",
+    "should_trigger": false
+  },
+  {
+    "query": "decide whether this finding is in scope for the release",
+    "should_trigger": false
+  },
+  {
+    "query": "where should the handoff document live",
+    "should_trigger": false
+  },
+  {
+    "query": "what should we build next",
+    "should_trigger": false
+  },
+  {
+    "query": "why is my CI log showing a deprecation warning",
+    "should_trigger": false
+  },
+  {
+    "query": "explain what a flaky test is",
+    "should_trigger": false
+  },
+  {
+    "query": "write a bash script to rename files",
+    "should_trigger": false
+  }
+]

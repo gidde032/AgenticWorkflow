@@ -1,0 +1,20 @@
+{
+  "name": "gidde032-plugins",
+  "interface": {
+    "displayName": "gidde032 plugins"
+  },
+  "plugins": [
+    {
+      "name": "agentic-workflow",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

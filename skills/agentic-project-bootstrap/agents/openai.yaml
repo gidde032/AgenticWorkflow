@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Project Bootstrap"
+  short_description: "Stand up the whole workflow on day one"
+  default_prompt: "Use $agentic-project-bootstrap to stand up the spec, memory files, GitHub-backed planning, quality gates, review cadence, and evolution ledger for this project."

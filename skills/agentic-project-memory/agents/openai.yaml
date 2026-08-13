@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Project Memory"
+  short_description: "Give every fact one authoritative home"
+  default_prompt: "Use $agentic-project-memory to decide where this information belongs and reconcile the project's source-of-truth documents."

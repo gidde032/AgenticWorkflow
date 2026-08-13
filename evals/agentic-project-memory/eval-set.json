@@ -1,0 +1,62 @@
+[
+  {
+    "query": "handing off to a fresh session tomorrow, what does it need to know",
+    "should_trigger": true
+  },
+  {
+    "query": "should the deferred-idea list live in the spec or get filed as Issues",
+    "should_trigger": true
+  },
+  {
+    "query": "the CHANGELOG says 0.3.0 shipped but the roadmap still lists it as planned",
+    "should_trigger": true
+  },
+  {
+    "query": "my handoff doc has turned into a second backlog",
+    "should_trigger": true
+  },
+  {
+    "query": "where should I record a lesson I learned mid-release",
+    "should_trigger": true
+  },
+  {
+    "query": "this internal doc is 600 lines and painful to update, should I split it",
+    "should_trigger": true
+  },
+  {
+    "query": "a tooling failure burned an hour, where does the post-mortem go",
+    "should_trigger": true
+  },
+  {
+    "query": "merged. what do I close out",
+    "should_trigger": false
+  },
+  {
+    "query": "write a README for this CLI",
+    "should_trigger": false
+  },
+  {
+    "query": "third time a reviewer has missed a broken doc link, should we gate it",
+    "should_trigger": false
+  },
+  {
+    "query": "document the CLI commands and options",
+    "should_trigger": false
+  },
+  {
+    "query": "brief three reviewers on this PR",
+    "should_trigger": false
+  },
+  {
+    "query": "what should we build next",
+    "should_trigger": false
+  },
+  {
+    "query": "explain what a monorepo is",
+    "should_trigger": false
+  },
+  {
+    "query": "add docstrings to these functions",
+    "should_trigger": false
+  }
+]

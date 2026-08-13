@@ -1,0 +1,18 @@
+name: Investigation
+description: An open question to research before it can become actionable work.
+labels: ["investigation"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: The question
+      description: What do we need to learn, and why does it block a decision?
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: What "answered" looks like
+      description: The evidence or artifact that would close this investigation.
+    validations:
+      required: true

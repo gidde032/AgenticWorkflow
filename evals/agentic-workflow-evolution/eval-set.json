@@ -1,0 +1,62 @@
+[
+  {
+    "query": "should we change the workflow based on this",
+    "should_trigger": true
+  },
+  {
+    "query": "promote this lesson into a reusable practice",
+    "should_trigger": true
+  },
+  {
+    "query": "this failure has recurred three times, does it justify a rule",
+    "should_trigger": true
+  },
+  {
+    "query": "what evidence supports this rule we keep following",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to retire a practice that is no longer earning its keep",
+    "should_trigger": true
+  },
+  {
+    "query": "log this workflow revision",
+    "should_trigger": true
+  },
+  {
+    "query": "is this practice reusable across projects or just this one",
+    "should_trigger": true
+  },
+  {
+    "query": "where should this lesson be written down",
+    "should_trigger": false
+  },
+  {
+    "query": "run the reviewers on this PR",
+    "should_trigger": false
+  },
+  {
+    "query": "how much is this costing",
+    "should_trigger": false
+  },
+  {
+    "query": "decompose this issue",
+    "should_trigger": false
+  },
+  {
+    "query": "merged, what do I close out",
+    "should_trigger": false
+  },
+  {
+    "query": "refactor this module",
+    "should_trigger": false
+  },
+  {
+    "query": "what is continuous integration",
+    "should_trigger": false
+  },
+  {
+    "query": "explain the strategy pattern",
+    "should_trigger": false
+  }
+]

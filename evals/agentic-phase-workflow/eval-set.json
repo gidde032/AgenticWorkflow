@@ -1,0 +1,62 @@
+[
+  {
+    "query": "merged. what do I close out",
+    "should_trigger": true
+  },
+  {
+    "query": "is this a feature phase or a hardening pass",
+    "should_trigger": true
+  },
+  {
+    "query": "run the next delivery slice from this issue",
+    "should_trigger": true
+  },
+  {
+    "query": "we finished the release, what is the closeout checklist",
+    "should_trigger": true
+  },
+  {
+    "query": "should I bundle these four features into one phase and one review",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I sequence the issues inside this milestone",
+    "should_trigger": true
+  },
+  {
+    "query": "audit the implementation against the spec section by section",
+    "should_trigger": true
+  },
+  {
+    "query": "where should this lesson belong, practices or the FAQ",
+    "should_trigger": false
+  },
+  {
+    "query": "brief the cold reviewers for this PR",
+    "should_trigger": false
+  },
+  {
+    "query": "set up this repository from scratch",
+    "should_trigger": false
+  },
+  {
+    "query": "write the regression test for the bug the reviewer found",
+    "should_trigger": false
+  },
+  {
+    "query": "what should we build next, feature A or feature B",
+    "should_trigger": false
+  },
+  {
+    "query": "write a test plan for the CSV importer",
+    "should_trigger": false
+  },
+  {
+    "query": "explain how git bisect works",
+    "should_trigger": false
+  },
+  {
+    "query": "update the npm dependencies in this project",
+    "should_trigger": false
+  }
+]

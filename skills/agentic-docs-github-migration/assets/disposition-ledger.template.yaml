@@ -1,0 +1,37 @@
+ledger_version: 1
+
+project:
+  name: null
+  repository_root: null
+  audited_head_sha: null
+
+audit:
+  generated_on: null
+  complete: false
+  auditor: null
+
+sources:
+  - id: SOURCE-001
+    path: null
+    scope: entire-file
+    fingerprint: null
+    scan_complete: false
+    finding_ids:
+      - FINDING-001
+
+findings:
+  - id: FINDING-001
+    summary: null
+    source_refs:
+      - source_id: SOURCE-001
+        location: null
+    category: null
+    status: awaiting_human_decision
+    evidence: []
+    authoritative_destination: null
+    issue:
+      proposed_title: null
+      number: null
+      url: null
+    rationale: null
+    public_safe_summary: null

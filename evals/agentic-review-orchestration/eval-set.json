@@ -1,0 +1,62 @@
+[
+  {
+    "query": "spawn three independent reviewers against this draft PR",
+    "should_trigger": true
+  },
+  {
+    "query": "run a release hardening audit with orthogonal lenses",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I brief a cold reviewer so it stays independent",
+    "should_trigger": true
+  },
+  {
+    "query": "two reviewers found the same issue, how much weight does that carry",
+    "should_trigger": true
+  },
+  {
+    "query": "which personas should review this API change",
+    "should_trigger": true
+  },
+  {
+    "query": "the reviewers came back, how do I triage their findings",
+    "should_trigger": true
+  },
+  {
+    "query": "should reviewers run in parallel or one after another",
+    "should_trigger": true
+  },
+  {
+    "query": "review this diff for a security bug",
+    "should_trigger": false
+  },
+  {
+    "query": "convert this accepted finding into a regression test",
+    "should_trigger": false
+  },
+  {
+    "query": "decompose this issue into work packets for implementers",
+    "should_trigger": false
+  },
+  {
+    "query": "which model tier is cheapest for reviewers",
+    "should_trigger": false
+  },
+  {
+    "query": "merged, what do I close out",
+    "should_trigger": false
+  },
+  {
+    "query": "write a code review comment for this function",
+    "should_trigger": false
+  },
+  {
+    "query": "what does LGTM stand for",
+    "should_trigger": false
+  },
+  {
+    "query": "install eslint in this project",
+    "should_trigger": false
+  }
+]
