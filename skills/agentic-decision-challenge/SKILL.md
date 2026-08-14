@@ -1,22 +1,15 @@
 ---
 name: agentic-decision-challenge
 description: >-
-  Invoke this skill whenever the user asks you to grill, pressure-test,
-  stress-test, poke holes in, challenge, interrogate, or sanity-check a decision —
-  including bare phrasings like "grill me on this", "poke holes in this plan", "am
-  I missing anything", or "help me think through" a choice. It sharpens one
-  already-proposed medium-to-large plan, architecture, workflow change, or product
-  decision before it is committed, or when a consequential decision is being made
-  without scrutiny. Prefer loading this skill over grilling from memory, so the
-  dependency-tree and frontier mechanism is applied. It
-  maps the decision as a dependency tree, asks only the currently-answerable
-  questions each round with a recommended answer and a short menu of genuinely
-  reasonable options, investigates discoverable facts itself instead of asking,
-  routes questions that need research or a prototype out to that work, and stops at
-  a shared-understanding gate without claiming authority to act. Do not use for
-  trivial or easily-reversible decisions, for deciding what to build from scratch
-  (product discovery), for reviewing a diff, or for recording where a decision
-  lives. Experimental.
+  Grill, pressure-test, stress-test, poke holes in, challenge, or sanity-check a
+  decision the user is about to commit to. Trigger on any such request — including
+  bare ones like "grill me on this", "poke holes in this", "am I missing anything",
+  or "help me think through this" — for a medium-to-large plan, architecture,
+  workflow, or product decision, or when a consequential decision is going
+  unchallenged. Runs a dependency-tree, one-question-round-at-a-time interrogation
+  and stops at a shared-understanding gate without authority to act. Not for trivial
+  decisions, deciding what to build from scratch (product discovery), reviewing a
+  diff, or recording a decision. Experimental.
 ---
 
 # Agentic Decision Challenge

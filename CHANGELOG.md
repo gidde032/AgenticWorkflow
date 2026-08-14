@@ -19,6 +19,14 @@
   Pocock's MIT-licensed `grill-me`/`grilling` skills, credited in the skill's
   `examples.md`; no source text ported. Tracked by Issue #9.
 
+### New command
+
+- **`/grill [decision]`** — deterministic front door that loads
+  `agentic-decision-challenge` and runs its full loop. Natural-language phrasings
+  ("grill me on this", "pressure-test this decision") also trigger the skill, but
+  the command guarantees activation; the skill's `examples.md` records where
+  auto-trigger is and isn't reliable.
+
 ## 3.0.0 — First public release
 
 ### New skill

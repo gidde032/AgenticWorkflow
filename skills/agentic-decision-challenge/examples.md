@@ -113,9 +113,11 @@ and the round/question where it occurred in the owning Issue before promotion.
   regression test, "explain how X works", or tabs-vs-spaces. For an
   interrogation-flavoured skill, false-positive silence is the property that
   matters most, and it is clean.
-- **Triggers on explicit decision-challenge framings.** "Pressure-test this
-  decision…" 0.80, "challenge my assumptions about…" 0.80, "stress-test whether we
-  should adopt…" 0.60 — all pass the 0.5 threshold.
+- **Partially triggers on explicit decision-challenge framings.** "Stress-test
+  whether we should adopt…" 0.80, "pressure-test this decision…" 0.60, "challenge
+  my assumptions about…" 0.40 — with meaningful **run-to-run variance** (the last
+  swung between 0.40 and 1.00 across runs on identical wording). Treat these as
+  "usually loads," not "always."
 - **Bare imperatives fail to load the skill — a real activation gap, not just a
   detection artifact.** "Grill me on this plan: …", "poke holes in my architecture
   …", "am I missing anything before …", and "help me think through whether …" score
@@ -129,23 +131,31 @@ and the round/question where it occurred in the owning Issue before promotion.
   these phrasings **the skill does not run at all**; the user gets an ordinary
   answer that superficially resembles grilling but has none of this skill's
   discipline. The harness scoring these 0.00 is therefore correct, not a false
-  negative to explain away. The description reliably loads the skill on explicit
-  framings ("pressure-test this decision", "challenge my assumptions", "stress-test
-  whether we should adopt") and via the explicit `$agentic-decision-challenge`
-  invocation, but not yet on the bare imperatives — including "grill me", the very
-  phrasing intended as the front door. Closing this activation gap is the top open
-  item for this experiment.
+  negative to explain away.
+- **Wording is a weak lever; the `/grill` command is the reliable fix.** Two
+  descriptions were measured — a dense trigger-first one (11/15) and a lean one
+  (10/15, the shipped version). The difference is inside run-to-run noise, and both
+  leave every bare imperative at 0.00. So description tuning does not close the gap.
+  What does: the **`/grill [decision]` command** and the explicit
+  `$agentic-decision-challenge` invocation. A captured `/grill …` transcript shows
+  the agent issue a `Skill` tool call loading `agentic-decision-challenge`, then run
+  the disciplined loop for real — investigating infra itself, building the
+  dependency tree, separating the bundled commitments, and setting up the Round-1
+  frontier. That is the front door to rely on; natural-language auto-trigger is a
+  best-effort bonus.
 - The tight default 20s per-query timeout also produced whole-run 0.00 sweeps under
   load (a known failure mode flagged in `evals/harness/run.sh`); the results above
   use a 45s timeout, which removed that noise.
 
-Net: **11/15 pass**, but read it honestly: the trustworthy positives are zero
-over-triggering and reliable loading on explicit framings plus the `$` invocation.
-The 4 failing positives are genuine activation misses — the skill never loads and
-the model self-serves a generic answer — and the most important miss is "grill me".
-This is recorded as honest evidence per the experiment contract; synthetic routing
-numbers are evidence, not promotion authority. Promotion depends on the three
-real-work ride-along lanes **and** on closing the bare-imperative activation gap.
+Net: **10/15 pass** on the shipped lean description. Read honestly: zero
+over-triggering (the property that matters most for an interrogation skill),
+best-effort auto-trigger on explicit framings, a deterministic front door via
+`/grill` and `$`-invocation, and a genuine unsolved gap on bare imperatives —
+including "grill me" — where the model self-serves a generic answer instead of
+loading the skill. Synthetic routing numbers are evidence, not promotion authority.
+Promotion depends on the three real-work ride-along lanes **and** on whether the
+`/grill` front door proves sufficient in practice or the bare-imperative gap needs
+a stronger mechanism.
 
 ---
 
