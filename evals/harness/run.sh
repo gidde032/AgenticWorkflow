@@ -19,6 +19,22 @@
 #      Override with EVAL_MODEL=<id>.
 #
 # Usage: evals/harness/run.sh <skill-name> [extra run_eval args...]
+#
+# Cheap iteration while tuning a description (evidence: the decision-challenge
+# description work ran ~6 full passes at real cost). A full pass is
+# 15 queries x 5 runs, serial. To iterate cheaply, cut all three multipliers:
+#   * Positives only. The negatives usually sit at 0.00 every run; re-measuring
+#     them each tweak is wasted spend. Point --eval-set at a trimmed file that
+#     keeps only should_trigger:true cases.
+#   * Fewer runs. Pass extra args through: `run.sh <skill> --runs-per-query 3`
+#     for a quick read, then one 5-run pass to confirm the winner.
+#   * No file churn for A/B. `--description "<text>"` overrides the SKILL.md
+#     description at runtime, so two wordings can be compared without editing or
+#     committing anything.
+# Watch for load-induced 0.00 sweeps: back-to-back batches can push later runs
+# past EVAL_TIMEOUT so a whole batch scores 0.00 (a false wipe, not a real
+# result). Space batches out, raise EVAL_TIMEOUT (45 worked), and distrust any
+# batch where even robust triggers drop to 0.
 set -euo pipefail
 
 SKILL="${1:?usage: run.sh <skill-name> [args...]}"; shift || true
