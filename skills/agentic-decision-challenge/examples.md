@@ -116,35 +116,36 @@ and the round/question where it occurred in the owning Issue before promotion.
 - **Triggers on explicit decision-challenge framings.** "Pressure-test this
   decision…" 0.80, "challenge my assumptions about…" 0.80, "stress-test whether we
   should adopt…" 0.60 — all pass the 0.5 threshold.
-- **Bare imperatives score 0.00 — part detection artifact, part real limitation.**
-  "Grill me on this plan: …", "poke holes in my architecture …", "am I missing
-  anything before …", and "help me think through whether …" score **0.00** even
-  though those exact verbs lead the description. A captured single-run transcript
-  for "grill me on this plan: store per-user rate-limit counters in a brand-new
-  Redis instance" resolves what is happening: the agent made **zero tool calls**
-  and immediately grilled inline (necessity → data model → atomicity → failure
-  modes). So the harness — which only counts a `Skill`/`Read` call
-  (`run_eval.py:178-179` returns `False` on any run with no such call) — records a
-  miss even though the user *was* grilled. That is the detection-artifact half.
-  The real-limitation half: grilling from memory dumped every question at once
-  instead of applying this skill's disciplined mechanism (one settled-prerequisite
-  frontier per round, a recommended answer, a short option menu, facts found not
-  asked). Loading the skill is what buys that discipline — which is exactly why the
-  description says to prefer loading it over grilling from memory. The eval shows
-  the description achieves that load on explicit framings ("pressure-test this
-  decision", "challenge my assumptions", "stress-test whether we should adopt") but
-  not yet on bare imperatives, where the model self-serves.
+- **Bare imperatives fail to load the skill — a real activation gap, not just a
+  detection artifact.** "Grill me on this plan: …", "poke holes in my architecture
+  …", "am I missing anything before …", and "help me think through whether …" score
+  **0.00**, even though those exact verbs lead the description. A captured
+  single-run transcript for "grill me on this plan: store per-user rate-limit
+  counters in a brand-new Redis instance" shows what actually happens: the agent
+  made **zero tool calls**, never loaded the skill, and answered with generic
+  grilling from its own training — dumping every question at once (necessity → data
+  model → atomicity → failure modes) instead of running one settled-prerequisite
+  frontier per round with recommended answers and option menus. In other words, on
+  these phrasings **the skill does not run at all**; the user gets an ordinary
+  answer that superficially resembles grilling but has none of this skill's
+  discipline. The harness scoring these 0.00 is therefore correct, not a false
+  negative to explain away. The description reliably loads the skill on explicit
+  framings ("pressure-test this decision", "challenge my assumptions", "stress-test
+  whether we should adopt") and via the explicit `$agentic-decision-challenge`
+  invocation, but not yet on the bare imperatives — including "grill me", the very
+  phrasing intended as the front door. Closing this activation gap is the top open
+  item for this experiment.
 - The tight default 20s per-query timeout also produced whole-run 0.00 sweeps under
   load (a known failure mode flagged in `evals/harness/run.sh`); the results above
   use a 45s timeout, which removed that noise.
 
-Net: **11/15 pass**. Trustworthy conclusions: zero over-triggering, reliable load
-on explicit decision-challenge framings, and a real gap on bare imperatives that a
-future revision should try to close (get the skill *loaded* so the disciplined loop
-runs, rather than relying on inline grilling). Recorded as honest evidence, per the
-experiment contract — synthetic routing numbers are evidence, not promotion
-authority. Promotion still depends on the three real-work ride-along lanes, and the
-bare-imperative load gap is an explicit item to watch there.
+Net: **11/15 pass**, but read it honestly: the trustworthy positives are zero
+over-triggering and reliable loading on explicit framings plus the `$` invocation.
+The 4 failing positives are genuine activation misses — the skill never loads and
+the model self-serves a generic answer — and the most important miss is "grill me".
+This is recorded as honest evidence per the experiment contract; synthetic routing
+numbers are evidence, not promotion authority. Promotion depends on the three
+real-work ride-along lanes **and** on closing the bare-imperative activation gap.
 
 ---
 
