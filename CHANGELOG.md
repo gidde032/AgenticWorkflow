@@ -1,5 +1,24 @@
 # Changelog
 
+## 3.1.0 — Decision-challenge experiment
+
+### New skill (experimental)
+
+- **`agentic-decision-challenge`** — stress-tests one already-proposed decision (a
+  plan, architecture, workflow change, or product choice) until its hidden
+  assumptions and dependent choices are visible. Maps the decision as a dependency
+  tree, asks only the settled-prerequisite frontier each round with a recommended
+  answer and a short menu of genuinely reasonable options, investigates
+  discoverable facts itself instead of asking, routes questions that need research
+  or a prototype out to that work, and stops at a shared-understanding gate without
+  claiming authority to act. Readily triggerable on medium-to-large decisions;
+  silent on trivial ones. Ships as an experiment with an explicit trigger policy,
+  evidence target, three-lane promotion condition, and retirement path.
+
+  Mechanism (decision tree / frontier / rounds) is a plugin-native rewrite of Matt
+  Pocock's MIT-licensed `grill-me`/`grilling` skills, credited in the skill's
+  `examples.md`; no source text ported. Tracked by Issue #9.
+
 ## 3.0.0 — First public release
 
 ### New skill

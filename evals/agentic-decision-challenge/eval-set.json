@@ -1,0 +1,62 @@
+[
+  {
+    "query": "grill me on this plan: store per-user rate-limit counters in a brand-new Redis instance",
+    "should_trigger": true
+  },
+  {
+    "query": "poke holes in my architecture of splitting the monolith into separate orders and payments services",
+    "should_trigger": true
+  },
+  {
+    "query": "pressure-test this decision to move our auth to a third-party provider like Auth0",
+    "should_trigger": true
+  },
+  {
+    "query": "am I missing anything before we commit the team to trunk-based development instead of git-flow",
+    "should_trigger": true
+  },
+  {
+    "query": "challenge my assumptions about splitting this service into two",
+    "should_trigger": true
+  },
+  {
+    "query": "stress-test whether we should adopt event sourcing for orders",
+    "should_trigger": true
+  },
+  {
+    "query": "help me think through whether Postgres or DynamoDB is the right call for the events table before I commit",
+    "should_trigger": true
+  },
+  {
+    "query": "what should we build next, the export feature or the dashboard",
+    "should_trigger": false
+  },
+  {
+    "query": "review this pull request diff for bugs",
+    "should_trigger": false
+  },
+  {
+    "query": "what should I name this variable, count or total",
+    "should_trigger": false
+  },
+  {
+    "query": "where should this lesson go, practices or the FAQ",
+    "should_trigger": false
+  },
+  {
+    "query": "set up this repository from scratch",
+    "should_trigger": false
+  },
+  {
+    "query": "write the regression test for the bug the reviewer found",
+    "should_trigger": false
+  },
+  {
+    "query": "explain how the rate limiter middleware works",
+    "should_trigger": false
+  },
+  {
+    "query": "should I use tabs or spaces in this file",
+    "should_trigger": false
+  }
+]

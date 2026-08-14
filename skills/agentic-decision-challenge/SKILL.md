@@ -1,0 +1,211 @@
+---
+name: agentic-decision-challenge
+description: >-
+  Invoke this skill whenever the user asks you to grill, pressure-test,
+  stress-test, poke holes in, challenge, interrogate, or sanity-check a decision —
+  including bare phrasings like "grill me on this", "poke holes in this plan", "am
+  I missing anything", or "help me think through" a choice. It sharpens one
+  already-proposed medium-to-large plan, architecture, workflow change, or product
+  decision before it is committed, or when a consequential decision is being made
+  without scrutiny. Prefer loading this skill over grilling from memory, so the
+  dependency-tree and frontier mechanism is applied. It
+  maps the decision as a dependency tree, asks only the currently-answerable
+  questions each round with a recommended answer and a short menu of genuinely
+  reasonable options, investigates discoverable facts itself instead of asking,
+  routes questions that need research or a prototype out to that work, and stops at
+  a shared-understanding gate without claiming authority to act. Do not use for
+  trivial or easily-reversible decisions, for deciding what to build from scratch
+  (product discovery), for reviewing a diff, or for recording where a decision
+  lives. Experimental.
+---
+
+# Agentic Decision Challenge
+
+**Experimental skill.** A structured interrogation that sharpens one
+already-proposed decision. It does not decide *what* to build (that is
+`agentic-product-discovery`) and it does not grant permission to act — it makes a
+decision more defensible by exposing what was silently assumed, then stops at a
+gate and hands the ratified understanding back to the workflow that owns the next
+step.
+
+Worked example, the seven forward-test scenarios, and provenance: `examples.md`.
+
+This skill is a plugin-native rebuild of the frontier/decision-tree mechanism
+from Matt Pocock's MIT-licensed `grill-me` / `grilling` skills, adapted to this
+plugin's stricter authority and evidence rules. See `examples.md` for attribution.
+
+---
+
+## When it runs
+
+Reach for it readily on a **medium-to-large** decision — one whose cost of being
+wrong is more than a quick redo. Any of these is a valid entry:
+
+- The user asks for it: "grill me on this", "poke holes in this plan",
+  "pressure-test this architecture", "am I missing anything here",
+  `$agentic-decision-challenge`.
+- You are about to help commit to a consequential plan, architecture, workflow
+  change, or product decision that has **not** been scrutinised. Offer the
+  challenge before the decision hardens.
+
+Do **not** run it on trivial or easily-reversible decisions — a variable name, a
+one-line default, a choice that costs seconds to change. Interrogating those is
+the interview-fatigue failure this skill is built to avoid.
+
+---
+
+## The loop
+
+### 1. Frame exactly one subject
+
+State the single decision under challenge in one sentence, and the outcome that
+makes it *settled*. One subject per session. If the user hands you a bundle
+("grill our whole Q3 architecture"), narrow it to the one decision that matters
+most or split it — see **Bounded scope** below. Do not silently grill everything.
+
+### 2. Map it as a dependency tree
+
+Every decision branches into the decisions that hang off it. A choice belongs
+*below* another when you cannot sensibly answer it until the parent is settled.
+You hold this tree; you do not have to draw it for the user, but you must respect
+it — asking a child before its parent is the "dependent question asked too early"
+mistake.
+
+### 3. Work the frontier in rounds
+
+The **frontier** is every decision whose prerequisites are already settled — the
+questions you can ask *now* without guessing at answers you have not heard yet.
+Ask the whole frontier in one round, then wait for answers before the next.
+
+Each question is numbered and carries a recommended answer:
+
+```
+❓ Q1 — <short title>: <the question, plainly stated>
+   a) <option>            — <one-line why>
+   b) <option>            — <one-line why>
+   ➡️ Recommended: <b, and one line on why it wins>
+```
+
+**Option rules — this is load-bearing:**
+
+- Offer only **genuinely reasonable** choices. Every option must be a defensible
+  answer, not a strawman.
+- **Plain language, no jargon.** If an option needs a glossary, rewrite it.
+- **Up to four options, fewer when there are not four good ones.** Two strong
+  choices beat four padded ones. Do not invent options to reach a count.
+- **Drop dominated choices.** If an option has a clear large downside and a
+  clearly better alternative exists, leave it out rather than list it to argue
+  against. Mention it in one line only if the user is likely to expect it.
+- Always give a **recommended answer** with a one-line reason. A question with no
+  recommendation is you offloading the thinking back onto the user.
+- Some questions are genuinely open and have no menu — ask them plainly. Do not
+  manufacture options for a question that is really "what is your constraint here?"
+
+After each round, the user's answers settle decisions, which pushes the frontier
+outward and unblocks the questions that depended on them. Recompute the frontier
+and ask the next round. A question whose answer still depends on something open in
+this round belongs to a *later* round.
+
+### 4. Find facts yourself; put decisions to the user
+
+**Facts are your job, never the user's.** When a frontier question turns on a fact
+you can discover — what the code already does, which library version is pinned,
+whether a file exists, what a benchmark says — go find it (read the repo, run a
+read-only command, check the docs) instead of asking. Verify it; distinguish what
+you *confirmed* from what you *inferred*.
+
+Do not block the whole frontier on one slow lookup. A running investigation is
+just an unsettled prerequisite: only the questions *downstream* of it wait — ask
+the rest of the frontier now, and fold the fact in when it lands. Subagents are
+optional; use direct inspection when that is enough.
+
+**Decisions are the user's.** Put each consequential choice to them and wait. Do
+not resolve a genuine judgement call by picking your recommendation and moving on.
+
+### 5. Route the un-discussable out
+
+Some questions cannot be settled by discussion *or* lookup — they need real
+research, a spike, or a prototype ("will this query hold at 10× load?"). Name the
+question, say why talking about it will not resolve it, and route it to that work.
+Do not keep re-asking it in successive rounds, and do not let it silently block the
+gate — record it as an open item the decision depends on.
+
+### 6. Stop at the shared-understanding gate
+
+The session is done when the frontier is empty: every branch visited, nothing left
+silently assumed. Then:
+
+- State the decision as now understood, the assumptions surfaced, the choices the
+  user made, and any items routed to research/prototyping that remain open.
+- **Stop.** Understanding is not authority. Do **not** start implementing, write
+  spec/ADR/code artifacts, or treat "we agree" as permission to build.
+- Hand off: recording the decision → `agentic-project-memory`; turning it into
+  delivery → `agentic-phase-workflow`; the authorization envelope for acting on it
+  → `agentic-collaboration-cadence`; unresolved *what to build* → back to
+  `agentic-product-discovery`.
+
+---
+
+## Bounded scope
+
+This skill has an appetite, not an unlimited one.
+
+- **One subject per session.** Split a bundle; do not chain-grill.
+- **Stop when the frontier empties.** More questions are always *possible*; that is
+  not a reason to keep asking. The bar is "nothing consequential left silently
+  assumed," not "every conceivable branch enumerated."
+- **Narrow an over-broad subject** to its highest-stakes decision, out loud, and
+  offer to run the rest separately. Interview fatigue is a failure mode, not a sign
+  of thoroughness.
+- **No new backlog or source of truth.** Findings route to their owners; this skill
+  does not invent a decisions register.
+
+---
+
+## Experiment contract
+
+This skill ships as an experiment. Until the promotion criteria are met it stays
+labelled experimental and can be reshaped or retired without ceremony.
+
+- **Trigger policy:** readily triggerable on medium-to-large decisions (explicit
+  request or an unscrutinised consequential decision); silent on trivial ones.
+- **Supported workflows:** challenging a single proposed plan, architecture,
+  workflow change, or product decision before it is ratified or acted on.
+- **Excluded workflows:** open-ended "what should I build" discovery; auditing an
+  implemented diff; recording decisions; ordinary planning that is not
+  stress-testing a specific choice; any interrogation that has become a general
+  chat loop.
+- **Evidence target:** for each real use, record the material assumptions exposed,
+  the question/round cost, any user pushback, overlap with existing skills, and
+  whether the final decision became more defensible. Kept in the owning Issue and,
+  when durable, in `examples.md`.
+- **Promotion condition:** useful results across three lanes — one product, one
+  architecture, one workflow decision — without recurring scope drift or interview
+  fatigue.
+- **Retirement / rollback:** if it drifts or fatigues rather than sharpens, reshape
+  the loop or delete the skill directory and its eval set; nothing else depends on
+  it.
+
+---
+
+## When NOT to use this skill
+
+- **Deciding what to build, build-vs-buy, product scope, or visual direction** —
+  `agentic-product-discovery`. This skill sharpens a decision already on the table;
+  it does not generate the options space.
+- **Auditing an implemented change or a diff** — `agentic-review-orchestration`.
+- **Recording where a decision or its rationale lives** — `agentic-project-memory`.
+- **Running the build loop once the decision is made** — `agentic-phase-workflow`.
+- **Setting how much authority an agent has or where check-ins go** —
+  `agentic-collaboration-cadence`.
+- **A trivial or easily-reversible decision** — just make it; grilling it is
+  waste.
+- **A decision that is really blocked on a fact or a prototype** — do the lookup or
+  the spike; do not interrogate around a gap that only evidence can fill.
+
+---
+
+## Provenance
+
+Mechanism origin, MIT attribution, the worked session, and the seven forward-test
+scenarios with their pass criteria: `examples.md`.
