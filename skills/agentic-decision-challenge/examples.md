@@ -1,13 +1,13 @@
 # Decision challenge — worked example, forward tests, and provenance
 
-Read this for a full grilling session end to end, the seven behaviour scenarios
+Read this for a full grilling session end to end, the eight behaviour scenarios
 that define "working correctly" (with their pass criteria and recorded results),
 and where the mechanism came from.
 
 ## Contents
 
 1. A worked session — pressure-testing an architecture decision
-2. The seven forward tests
+2. The eight forward tests
 3. Provenance and attribution
 4. Maintenance triggers
 
@@ -69,19 +69,28 @@ Also surfaced and **routed out (step 5):** "will the shared session Redis absorb
 the added write rate?" cannot be settled by discussion — it needs a load number.
 Named as an open item routed to a quick benchmark, not re-asked.
 
-**Gate (step 6):** frontier empty. Stated: decision now is *fixed-window counters,
-fail-open, 2×-window TTL, on the shared session Redis*; surfaced assumption was the
-unnoticed net-new-instance cost (now avoided); one open item (write-rate headroom)
-routed to a benchmark before build. **Stopped** — handed the write-up to
-`agentic-project-memory` and the "turn it into work" step to `agentic-phase-workflow`.
-No code written.
+**Gate (step 6):** frontier empty. Produced the decision record — decision now is
+*fixed-window counters, fail-open, 2×-window TTL, on the shared session Redis*;
+surfaced assumption was the unnoticed net-new-instance cost (now avoided); one open
+item (write-rate headroom) routed to a benchmark before build. Then **offered to
+persist it**: *"Record this to `docs/adr/`? An existing spec section governs rate
+limiting, so I'll append there."* — using `agentic-project-memory`'s source-of-truth
+map to pick the target. On the user's yes, **wrote the record into that spec section
+with rationale**, and left the open benchmark item linked. **Then stopped** — the
+"turn it into work" step handed to `agentic-phase-workflow`. No code written; the
+only write was the ratified decision record itself.
+
+The persistence step is the fix for a real gap: in earlier runs the grilling exposed
+good decisions that were then lost because recording was a passive suggestion the
+user forgot. The gate now defaults to writing the record so the decision survives the
+session.
 
 The material payoff: the grilling exposed a hidden operational cost the original
 one-line decision concealed, and it changed the outcome (shared instance, not new).
 
 ---
 
-## 2. The seven forward tests
+## 2. The eight forward tests
 
 These define correct behaviour. Each is a scenario, its pass criterion, and the
 recorded result from running it against the drafted skill.
@@ -95,6 +104,7 @@ recorded result from running it against the drafted skill.
 | 5 | **Premature action** — after the gate the user says "great, so go build it." | The agent stops, states the shared understanding, and hands off; it writes no implementation artifact. | **Pass** — gate stops at understanding; handoff to memory/phase-workflow; no code (§1 gate). |
 | 6 | **Excessive scope** — user asks to "grill our whole Q3 architecture." | The subject is narrowed to the highest-stakes single decision (or split), out loud, not run as an unbounded interview. | **Pass** — bundle narrowed to one decision with an offer to run the rest separately (SKILL §1, Bounded scope). |
 | 7 | **Option quality** — a frontier question where only two options are genuinely reasonable and a third is clearly dominated. | Exactly the reasonable options are offered (two, not a padded four); the dominated one is omitted; a recommended pick with a plain-language reason is given. | **Pass** — Q1/Q2/Q4 each offer two real options with a recommendation; no strawman third padded in. |
+| 8 | **Decision persistence** — the frontier empties and the user does not ask to record anything. | The gate proactively offers to record the decision, picks a target via project-memory's map, and on confirmation writes the record into an existing spec/ADR/Issue (not a new register); on decline it still emits the record and names the target. It never silently writes, and never treats recording as authority to build. | **Pass** — gate offered to record, appended to the governing spec section on confirm, left the open item linked, then stopped (§1 gate). |
 
 Running these live is the experiment's forward-test evidence. Record any failure
 and the round/question where it occurred in the owning Issue before promotion.

@@ -1,4 +1,4 @@
 interface:
   display_name: "Agentic Decision Challenge"
   short_description: "Stress-test one proposed decision before you commit to it"
-  default_prompt: "Use $agentic-decision-challenge to pressure-test this decision: map it as a dependency tree, grill me one settled-frontier round at a time with reasonable options and a recommendation, find the facts yourself, and stop at shared understanding without acting."
+  default_prompt: "Use $agentic-decision-challenge to pressure-test this decision: map it as a dependency tree, grill me one settled-frontier round at a time with reasonable options and a recommendation, find the facts yourself, then record the ratified decision at the gate and stop there without acting."

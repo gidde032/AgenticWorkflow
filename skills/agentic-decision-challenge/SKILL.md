@@ -6,10 +6,11 @@ description: >-
   bare ones like "grill me on this", "poke holes in this", "am I missing anything",
   or "help me think through this" — for a medium-to-large plan, architecture,
   workflow, or product decision, or when a consequential decision is going
-  unchallenged. Runs a dependency-tree, one-question-round-at-a-time interrogation
-  and stops at a shared-understanding gate without authority to act. Not for trivial
-  decisions, deciding what to build from scratch (product discovery), reviewing a
-  diff, or recording a decision. Experimental.
+  unchallenged. Runs a dependency-tree, one-question-round-at-a-time interrogation,
+  records the ratified decision at the gate, and stops there without authority to
+  act. Not for trivial decisions, deciding what to build from scratch (product
+  discovery), reviewing a diff, or merely filing a decision already made (that is
+  project-memory). Experimental.
 ---
 
 # Agentic Decision Challenge
@@ -21,7 +22,7 @@ decision more defensible by exposing what was silently assumed, then stops at a
 gate and hands the ratified understanding back to the workflow that owns the next
 step.
 
-Worked example, the seven forward-test scenarios, and provenance: `examples.md`.
+Worked example, the eight forward-test scenarios, and provenance: `examples.md`.
 
 This skill is a plugin-native rebuild of the frontier/decision-tree mechanism
 from Matt Pocock's MIT-licensed `grill-me` / `grilling` skills, adapted to this
@@ -128,14 +129,25 @@ gate — record it as an open item the decision depends on.
 The session is done when the frontier is empty: every branch visited, nothing left
 silently assumed. Then:
 
-- State the decision as now understood, the assumptions surfaced, the choices the
-  user made, and any items routed to research/prototyping that remain open.
-- **Stop.** Understanding is not authority. Do **not** start implementing, write
-  spec/ADR/code artifacts, or treat "we agree" as permission to build.
-- Hand off: recording the decision → `agentic-project-memory`; turning it into
-  delivery → `agentic-phase-workflow`; the authorization envelope for acting on it
-  → `agentic-collaboration-cadence`; unresolved *what to build* → back to
-  `agentic-product-discovery`.
+- **Produce the decision record.** State it compactly: the decision as now settled,
+  the assumptions surfaced, the choices the user made, and any items routed to
+  research/prototyping that remain open. This block is the durable artifact of the
+  session.
+- **Persist it before ending — do not leave it to the user to remember.** Offer to
+  record the decision, defaulting to yes: *"Record this decision to `<target>`?"*
+  Choose `<target>` with `agentic-project-memory`'s source-of-truth map — an
+  existing spec/ADR section that governs this decision, else a new ADR, else the
+  handoff or owning Issue. Do not invent a decisions log or a placement rule of your
+  own; that ownership is project-memory's. On the user's confirmation, **write the
+  record into that target yourself** (append with rationale; keep a human confirm so
+  nothing lands in a spec silently). If the user declines, leave the record in the
+  session output and say where it would have gone.
+- **Then stop.** Recording a ratified decision is documentation, not authority to
+  act. Do **not** start implementing, write code or other *implementation*
+  artifacts, or treat "we agree" as permission to build.
+- Hand off the rest: turning the decision into delivery → `agentic-phase-workflow`;
+  the authorization envelope for acting on it → `agentic-collaboration-cadence`;
+  unresolved *what to build* → back to `agentic-product-discovery`.
 
 ---
 
@@ -150,8 +162,10 @@ This skill has an appetite, not an unlimited one.
 - **Narrow an over-broad subject** to its highest-stakes decision, out loud, and
   offer to run the rest separately. Interview fatigue is a failure mode, not a sign
   of thoroughness.
-- **No new backlog or source of truth.** Findings route to their owners; this skill
-  does not invent a decisions register.
+- **No new backlog or source of truth.** The decision record is written into an
+  *existing* owner chosen by `agentic-project-memory` (a spec/ADR, the handoff, or
+  the Issue); this skill does not invent its own decisions register or placement
+  rule.
 
 ---
 
@@ -187,7 +201,9 @@ labelled experimental and can be reshaped or retired without ceremony.
   `agentic-product-discovery`. This skill sharpens a decision already on the table;
   it does not generate the options space.
 - **Auditing an implemented change or a diff** — `agentic-review-orchestration`.
-- **Recording where a decision or its rationale lives** — `agentic-project-memory`.
+- **Deciding *where* a decision or its rationale lives** — `agentic-project-memory`
+  owns the source-of-truth map. This skill *writes* the decision record at the gate,
+  but it uses that map to choose the target rather than deciding placement itself.
 - **Running the build loop once the decision is made** — `agentic-phase-workflow`.
 - **Setting how much authority an agent has or where check-ins go** —
   `agentic-collaboration-cadence`.
@@ -200,5 +216,5 @@ labelled experimental and can be reshaped or retired without ceremony.
 
 ## Provenance
 
-Mechanism origin, MIT attribution, the worked session, and the seven forward-test
+Mechanism origin, MIT attribution, the worked session, and the eight forward-test
 scenarios with their pass criteria: `examples.md`.

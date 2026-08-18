@@ -11,9 +11,13 @@
   answer and a short menu of genuinely reasonable options, investigates
   discoverable facts itself instead of asking, routes questions that need research
   or a prototype out to that work, and stops at a shared-understanding gate without
-  claiming authority to act. Readily triggerable on medium-to-large decisions;
-  silent on trivial ones. Ships as an experiment with an explicit trigger policy,
-  evidence target, three-lane promotion condition, and retirement path.
+  claiming authority to act. At the gate it produces a decision record and, on the
+  user's confirmation, writes it into the target chosen by `agentic-project-memory`'s
+  source-of-truth map (existing spec/ADR, handoff, or Issue) so ratified decisions
+  are not lost — recording being documentation, not authority to build. Readily
+  triggerable on medium-to-large decisions; silent on trivial ones. Ships as an
+  experiment with an explicit trigger policy, evidence target, three-lane promotion
+  condition, and retirement path.
 
   Mechanism (decision tree / frontier / rounds) is a plugin-native rewrite of Matt
   Pocock's MIT-licensed `grill-me`/`grilling` skills, credited in the skill's
