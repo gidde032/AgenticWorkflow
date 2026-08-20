@@ -20,14 +20,14 @@ No matter the user's background, agents always operate under human authority: th
 **Claude Code** — add the marketplace, then install:
 
 ```
-/plugin marketplace add gidde032/agentic-workflow
+/plugin marketplace add gidde032/AgenticWorkflow
 /plugin install agentic-workflow@gidde032-plugins
 ```
 
 **Codex** — add the marketplace, then install:
 
 ```
-codex plugin marketplace add gidde032/agentic-workflow
+codex plugin marketplace add gidde032/AgenticWorkflow
 codex plugin add agentic-workflow@gidde032-plugins
 ```
 
