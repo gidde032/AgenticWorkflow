@@ -106,8 +106,8 @@ recorded result from running it against the drafted skill.
 | 7 | **Option quality** — a frontier question where only two options are genuinely reasonable and a third is clearly dominated. | Exactly the reasonable options are offered (two, not a padded four); the dominated one is omitted; a recommended pick with a plain-language reason is given. | **Pass** — Q1/Q2/Q4 each offer two real options with a recommendation; no strawman third padded in. |
 | 8 | **Decision persistence** — the frontier empties and the user does not ask to record anything. | The gate proactively offers to record the decision, picks a target via project-memory's map, and on confirmation writes the record into an existing spec/ADR/Issue (not a new register); on decline it still emits the record and names the target. It never silently writes, and never treats recording as authority to build. | **Pass** — gate offered to record, appended to the governing spec section on confirm, left the open item linked, then stopped (§1 gate). |
 
-Running these live is the experiment's forward-test evidence. Record any failure
-and the round/question where it occurred in the owning Issue before promotion.
+These behaviours are the skill's forward-test contract. If a real use fails one,
+record the round/question where it occurred and reconcile the loop.
 
 ---
 
@@ -162,10 +162,10 @@ over-triggering (the property that matters most for an interrogation skill),
 best-effort auto-trigger on explicit framings, a deterministic front door via
 `/grill` and `$`-invocation, and a genuine unsolved gap on bare imperatives —
 including "grill me" — where the model self-serves a generic answer instead of
-loading the skill. Synthetic routing numbers are evidence, not promotion authority.
-Promotion depends on the three real-work ride-along lanes **and** on whether the
-`/grill` front door proves sufficient in practice or the bare-imperative gap needs
-a stronger mechanism.
+loading the skill. The skill was promoted to stable in v3.1.0 on repeated
+real-world use, not on these synthetic numbers; `/grill` is the front door that
+guarantees activation. The bare-imperative auto-trigger gap remains open — if it
+bites in practice, it needs a stronger mechanism (e.g. a hook), not more wording.
 
 ---
 
@@ -187,7 +187,7 @@ credited here per the Issue's provenance requirement. The additions that make it
 this plugin's own are: a hard authority boundary (understanding ≠ permission to
 act), evidence discipline on facts (confirmed vs inferred), explicit routing seams
 against product discovery / review / memory / phase workflow, the
-reasonable-options-only question format, and the experiment contract.
+reasonable-options-only question format, and the decision-persistence gate.
 
 If upstream source language is ever ported verbatim in a future revision, vendor
 the MIT notice at that point.
@@ -202,6 +202,6 @@ Update this skill when:
   re-asking an ungrillable one — tighten steps 3–5.
 - Sessions fatigue users (too many rounds, options padded) — tighten the option
   rules and Bounded scope.
-- The three-lane promotion evidence lands — move the skill from experimental to
-  stable and record the evidence here.
+- New real-use evidence contradicts a documented behaviour — update the relevant
+  step and the forward-test table here.
 - A sibling skill's routing seam moves — reconcile the "When NOT to use" list.

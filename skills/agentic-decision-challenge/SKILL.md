@@ -10,13 +10,13 @@ description: >-
   records the ratified decision at the gate, and stops there without authority to
   act. Not for trivial decisions, deciding what to build from scratch (product
   discovery), reviewing a diff, or merely filing a decision already made (that is
-  project-memory). Experimental.
+  project-memory).
 ---
 
 # Agentic Decision Challenge
 
-**Experimental skill.** A structured interrogation that sharpens one
-already-proposed decision. It does not decide *what* to build (that is
+A structured interrogation that sharpens one already-proposed decision. It does
+not decide *what* to build (that is
 `agentic-product-discovery`) and it does not grant permission to act — it makes a
 decision more defensible by exposing what was silently assumed, then stops at a
 gate and hands the ratified understanding back to the workflow that owns the next
@@ -169,29 +169,21 @@ This skill has an appetite, not an unlimited one.
 
 ---
 
-## Experiment contract
+## Scope
 
-This skill ships as an experiment. Until the promotion criteria are met it stays
-labelled experimental and can be reshaped or retired without ceremony.
+- **Supported:** challenging a single proposed plan, architecture, workflow change,
+  or product decision before it is ratified or acted on.
+- **Excluded:** open-ended "what should I build" discovery; auditing an implemented
+  diff; merely filing a decision already made; ordinary planning that is not
+  stress-testing a specific choice; any interrogation that has drifted into a
+  general chat loop.
+- **Record evidence of use:** for a consequential run, note the material assumptions
+  exposed, the question/round cost, and whether the decision became more defensible
+  — useful when refining the loop.
 
-- **Trigger policy:** readily triggerable on medium-to-large decisions (explicit
-  request or an unscrutinised consequential decision); silent on trivial ones.
-- **Supported workflows:** challenging a single proposed plan, architecture,
-  workflow change, or product decision before it is ratified or acted on.
-- **Excluded workflows:** open-ended "what should I build" discovery; auditing an
-  implemented diff; recording decisions; ordinary planning that is not
-  stress-testing a specific choice; any interrogation that has become a general
-  chat loop.
-- **Evidence target:** for each real use, record the material assumptions exposed,
-  the question/round cost, any user pushback, overlap with existing skills, and
-  whether the final decision became more defensible. Kept in the owning Issue and,
-  when durable, in `examples.md`.
-- **Promotion condition:** useful results across three lanes — one product, one
-  architecture, one workflow decision — without recurring scope drift or interview
-  fatigue.
-- **Retirement / rollback:** if it drifts or fatigues rather than sharpens, reshape
-  the loop or delete the skill directory and its eval set; nothing else depends on
-  it.
+Promoted from experiment to stable in v3.1.0 after repeated real-world use: the
+frontier/rounds mechanism and the reasonable-options rule held up, and the
+decision-persistence gate (step 6) was added from that use.
 
 ---
 

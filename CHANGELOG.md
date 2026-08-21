@@ -1,8 +1,8 @@
 # Changelog
 
-## 3.1.0 — Decision-challenge experiment
+## 3.1.0 — Decision-challenge skill
 
-### New skill (experimental)
+### New skill
 
 - **`agentic-decision-challenge`** — stress-tests one already-proposed decision (a
   plan, architecture, workflow change, or product choice) until its hidden
@@ -15,9 +15,9 @@
   user's confirmation, writes it into the target chosen by `agentic-project-memory`'s
   source-of-truth map (existing spec/ADR, handoff, or Issue) so ratified decisions
   are not lost — recording being documentation, not authority to build. Readily
-  triggerable on medium-to-large decisions; silent on trivial ones. Ships as an
-  experiment with an explicit trigger policy, evidence target, three-lane promotion
-  condition, and retirement path.
+  triggerable on medium-to-large decisions; silent on trivial ones. Started as a
+  contained experiment and promoted to a stable skill after repeated real-world
+  use.
 
   Mechanism (decision tree / frontier / rounds) is a plugin-native rewrite of Matt
   Pocock's MIT-licensed `grill-me`/`grilling` skills, credited in the skill's

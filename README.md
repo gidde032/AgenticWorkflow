@@ -94,7 +94,7 @@ For the authority model behind every checkpoint, see `agentic-collaboration-cade
 | `agentic-driving-weaker-models` | Get strong-model-quality results from cheaper/smaller agent sessions |
 | `agentic-docs-github-migration` | Migrate an existing repository's docs and governance to GitHub (explicit invocation only) |
 | `agentic-workflow-evolution` | Improve the workflow itself through evidence rather than theory |
-| `agentic-decision-challenge` | Stress-test one proposed decision until its hidden assumptions and dependent choices are visible — invoke with `/grill` (experimental) |
+| `agentic-decision-challenge` | Stress-test one proposed decision until its hidden assumptions and dependent choices are visible — invoke with `/grill` |
 
 ## Prerequisites
 
