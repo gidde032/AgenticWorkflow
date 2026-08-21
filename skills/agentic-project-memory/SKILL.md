@@ -70,7 +70,9 @@ moves, defers, completes, or reports planned work.
 
 The governing rule is **one fact, one authority**:
 
-- Specs and ADRs own approved product and architecture contracts.
+- Specs and ADRs own approved product and architecture contracts. (`agentic-decision-challenge`
+  may write a ratified decision record into one of these targets at its gate; it
+  defers *placement* to this skill's source-of-truth map.)
 - GitHub Issues own actionable planned work, bugs, deferred findings, and
   unresolved decisions.
 - Milestones own committed delivery horizons.

@@ -3,11 +3,11 @@
 ![Agentic workflow landing splash](docs/assets/agenticworkflowsplash.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-12-green.svg)](#skills)
-[![Version](https://img.shields.io/badge/version-3.0.0-orange.svg)](CHANGELOG.md)
+[![Skills](https://img.shields.io/badge/skills-13-green.svg)](#skills)
+[![Version](https://img.shields.io/badge/version-3.1.0-orange.svg)](CHANGELOG.md)
 [![Tested with: Claude, Codex](https://img.shields.io/badge/tested_with-Claude%20%C2%B7%20Codex-8b5cf6.svg)](#)
 
-**Coding agents are fast at writing code and reckless about everything around it.** Unharnessed agents create their own scope, skimp on code reviews, forgo testing and verification, ignore cost, and don't know when to stop and ask you. This plugin serves as the agentic development operating manual: twelve skills that keep the user firmly in charge while agents do the work, from day-one project setup through product discovery, phased delivery, independent review, enforceable quality gates, and improving the workflow itself.
+**Coding agents are fast at writing code and reckless about everything around it.** Unharnessed agents create their own scope, skimp on code reviews, forgo testing and verification, ignore cost, and don't know when to stop and ask you. This plugin serves as the agentic development operating manual: thirteen skills that keep the user firmly in charge while agents do the work, from day-one project setup through product discovery, phased delivery, independent review, enforceable quality gates, and improving the workflow itself.
 
 ## Model
 
@@ -96,6 +96,7 @@ For the authority model behind every checkpoint, see `agentic-collaboration-cade
 | `agentic-driving-weaker-models` | Get strong-model-quality results from cheaper/smaller agent sessions |
 | `agentic-docs-github-migration` | Migrate an existing repository's docs and governance to GitHub (explicit invocation only) |
 | `agentic-workflow-evolution` | Improve the workflow itself through evidence rather than theory |
+| `agentic-decision-challenge` | Stress-test one proposed decision until its hidden assumptions and dependent choices are visible — invoke with `/grill` |
 
 ## Prerequisites
 
@@ -107,6 +108,8 @@ Most skills require only Claude Code (or a Codex-compatible agent). Three skills
 ## Project structure
 
 ```
+commands/
+  grill.md              # /grill — deterministic front door for agentic-decision-challenge
 skills/
   agentic-*/
     SKILL.md              # Skill definition (frontmatter + body)

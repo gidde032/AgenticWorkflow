@@ -287,6 +287,10 @@ useful text, wireframe, or reference artifact and disclose the limitation.
 - The user wants only a code review, debug session, or production hardening pass.
 - The request is a small visual correction with no unresolved product or design
   choice; route directly to the relevant design/implementation skill.
+- A specific plan or decision is already on the table and needs *stress-testing*
+  before you commit — `agentic-decision-challenge` (or `/grill`) sharpens one
+  existing decision; this skill generates the options space, it does not interrogate
+  a settled one.
 
 ## Provenance
 

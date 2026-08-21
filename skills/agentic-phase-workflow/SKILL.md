@@ -357,6 +357,9 @@ At the close of a committed horizon:
   migration workflow only when deliberately invoked.
 - **Deciding which artifact owns planning, delivery, state, or rationale** —
   `agentic-project-memory`.
+- **Stress-testing one consequential plan or architecture decision before ratifying
+  it** — `agentic-decision-challenge` (`/grill`) exposes hidden assumptions and
+  records the decision; return here to turn the ratified decision into delivery.
 
 This skill is the container that sequences the others; when the question is
 *which shape of work is this and what's the next step in the loop*, you're in the

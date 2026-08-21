@@ -1,5 +1,36 @@
 # Changelog
 
+## 3.1.0 — Decision-challenge skill
+
+### New skill
+
+- **`agentic-decision-challenge`** — stress-tests one already-proposed decision (a
+  plan, architecture, workflow change, or product choice) until its hidden
+  assumptions and dependent choices are visible. Maps the decision as a dependency
+  tree, asks only the settled-prerequisite frontier each round with a recommended
+  answer and a short menu of genuinely reasonable options, investigates
+  discoverable facts itself instead of asking, routes questions that need research
+  or a prototype out to that work, and stops at a shared-understanding gate without
+  claiming authority to act. At the gate it produces a decision record and, on the
+  user's confirmation, writes it into the target chosen by `agentic-project-memory`'s
+  source-of-truth map (existing spec/ADR, handoff, or Issue) so ratified decisions
+  are not lost — recording being documentation, not authority to build. Readily
+  triggerable on medium-to-large decisions; silent on trivial ones. Started as a
+  contained experiment and promoted to a stable skill after repeated real-world
+  use.
+
+  Mechanism (decision tree / frontier / rounds) is a plugin-native rewrite of Matt
+  Pocock's MIT-licensed `grill-me`/`grilling` skills, credited in the skill's
+  `examples.md`; no source text ported. Tracked by Issue #9.
+
+### New command
+
+- **`/grill [decision]`** — deterministic front door that loads
+  `agentic-decision-challenge` and runs its full loop. Natural-language phrasings
+  ("grill me on this", "pressure-test this decision") also trigger the skill, but
+  the command guarantees activation; the skill's `examples.md` records where
+  auto-trigger is and isn't reliable.
+
 ## 3.0.0 — First public release
 
 ### New skill
