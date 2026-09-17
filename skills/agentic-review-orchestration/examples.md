@@ -161,3 +161,18 @@ Update this skill when:
   reviewers show a quality loss under a real benchmark.
 
 Do not delete superseded guidance; record the evolution.
+
+## 10. OCR integration (new, unproven in-project)
+
+The OCR pre-gate and OCR delegate reviewer are new. No in-project cycle has
+validated them yet. Treat the guidance as a hypothesis until a real review cycle
+tests it.
+
+The benchmark numbers are external and cited, not measured here: OCR reports
+about 4.7× precision and roughly 1/9 the token cost against raw Claude on the
+same model, with lower recall as an intentional tradeoff. Verify these against
+current OCR sources before relying on them.
+
+Update this skill when a real cycle shows whether the pre-gate improves triage
+signal, whether the OCR reviewer slot earns its place, and whether pre-gate
+cross-referencing catches real defects.

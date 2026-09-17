@@ -21,6 +21,10 @@ or PR discussion.
 Verify the changed-file manifest yourself against the base/head diff before
 reviewing.
 
+## Scope metadata (attention manifest, optional)
+<Files and per-file line-count bands only. Scope metadata, not findings. Omit if
+no manifest is available.>
+
 ## Role
 <Full skeptical-senior persona or focused specialist/lens text.>
 
@@ -77,3 +81,9 @@ with `(N additional LOW findings omitted)`.
 For a friction-style lens, retain the same evidence requirements but organize
 each finding as **What I tried / What happened / Contract or expectation /
 Evidence / Minimal reproduction**.
+
+For the OCR delegate reviewer, keep the same brief bones. Set the Role to the
+narrow rule scope (for example, security patterns only), different from the
+pre-gate scope. Run the review under the OCR harness (`ocr delegate rule` with a
+custom `--rule` file). Isolate it like any cold reviewer: no pre-gate findings,
+no other reviewer report.
