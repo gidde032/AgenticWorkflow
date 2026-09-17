@@ -48,6 +48,16 @@ Reviewer brief template: `assets/reviewer-brief-template.md`.
   output, and unverified claims.
 - **Interrupted reviewer** — one that timed out, hit a usage limit, or returned
   incomplete evidence. It does not fill a reviewer slot.
+- **OCR** — `open-code-review`, a CLI that scopes files and rules deterministically,
+  then delegates the review to a Claude subagent under your own subscription.
+- **Pre-gate** — a deterministic OCR pass run before briefs. It produces a
+  findings ledger and an attention manifest. It is not an independent reviewer.
+- **Attention manifest** — the OCR file list with per-file line-count bands and
+  exclusions. Scope metadata only. It carries no findings.
+- **OCR delegate reviewer** — a reviewer slot backed by the OCR harness with a
+  narrow rule scope. Isolated and briefed like any cold reviewer.
+- **Automated pre-gate comment** — a clearly-labeled, unverified PR comment from
+  the pre-gate. A distinct class from the human-approved public-safe summary.
 
 ## The core mechanism
 
@@ -80,6 +90,47 @@ Independence is a controlled evidence property, not merely a fresh chat window.
   convergence meaningful. Brief each reviewer separately. Don't tell a reviewer
   it is one of three.
 
+## OCR pre-gate phase
+
+Run this deterministic pass after preflight and before brief construction.
+
+**Activation.** Run the pre-gate when OCR is installed and Git is 2.41 or newer.
+If either is missing, skip the pre-gate and use current behavior unchanged.
+
+OCR reviews by file extension and excludes unsupported types (for example,
+Markdown) as `unsupported_ext`. On a code PR this is the intended scope. On a
+doc-heavy diff OCR reviews little; rely on the Claude reviewers there, or supply
+a custom `--rule` file with `include` patterns for the unsupported files. Pass
+that configuration to `ocr delegate preview` as well as `ocr delegate rule`.
+
+OCR does not call an LLM and does not post comments. It scopes files and rules,
+then a delegated Claude subagent runs the review. Producing the ledger and
+posting comments stay orchestrator work.
+
+Steps:
+
+1. Run `ocr delegate preview --from $BASE --to $HEAD`. Capture its output as the
+   **attention manifest**: touched files, per-file line-count bands, exclusions.
+   No findings.
+2. Run `ocr delegate rule <changed files>` with broad rule coverage. Dispatch one
+   delegated Claude subagent to review each file against the resolved rules.
+3. Collect its output as the **pre-gate findings ledger**: file:line, rule
+   category, severity.
+4. Before posting, the orchestrator sanitizes findings to remove personal
+   information, private paths, internal continuity details, and unpublished
+   project information. Post them to the PR as clearly-labeled automated,
+   unverified comments, using existing GitHub tooling.
+
+Independence rules:
+
+- Pre-gate findings NEVER enter any reviewer brief.
+- The attention manifest MAY enter reviewer briefs as scope metadata only.
+- The pre-gate is a pre-pass, not an independent reviewer. It never counts toward
+  convergence.
+
+Automated pre-gate comments are a distinct class. They do not satisfy, and are
+not part of, the human-approved public-safe review summary.
+
 ## The two review shapes
 
 Pick by the kind of work, not by taste.
@@ -87,11 +138,23 @@ Pick by the kind of work, not by taste.
 ### Shape A — three-reviewer pass for a substantive feature PR
 
 Once the implementation is integrated, locally green, and represented by a draft
-PR, run three contextless reviewers:
+PR, run three contextless reviewers as the minimum:
 
 1. A skeptical senior engineer.
 2. A specialist for the highest-risk product or architecture surface.
-3. A specialist for the next-most-independent risk surface.
+3. The OCR delegate reviewer, with a narrower rule scope than the pre-gate,
+   when OCR is active and the orchestrator confirms that the reviewed files and
+   selected rules provide meaningful coverage of a relevant risk surface.
+
+Add more Claude specialists when review scope or difficulty warrants. When OCR is
+not active or its coverage does not fit the reviewer slot, fill slot 3 with a
+specialist for the next-most-independent risk surface.
+
+**The OCR delegate reviewer.** Run `ocr delegate rule` with a narrow custom
+`--rule` scope (for example, security patterns only), different from the pre-gate
+scope. Dispatch a delegated Claude subagent under a cold brief, isolated like any
+reviewer. Its report enters the provisional ledger after all reviewers complete,
+same as any reviewer.
 
 Do not invoke this for a tiny mechanical change where review overhead exceeds
 the risk; route that through normal parent verification and required gates.
@@ -103,8 +166,10 @@ exposing provisional findings or completed reports.
   caught the highest-severity findings in multiple phases (`examples.md` §2).
 - **The other two are rotating domain specialists**, chosen by what the phase
   touched.
-- **Three is the default, not a floor to exceed.** Three stays legible to one
-  orchestrator at triage; adding reviewers past that has no evidence behind it.
+- **Three is the minimum, and it stays legible.** Three stays legible to one
+  orchestrator at triage. The OCR delegate reviewer holds a slot only when its
+  coverage fits the review target. Add Claude specialists past three only when
+  review scope warrants.
 
 Add a **documentation-drift overlay** when the PR changes behavior, scope,
 interfaces, commands, configuration, architecture, operations, release promises,
@@ -252,6 +317,10 @@ Then the parent:
 
 1. Normalizes duplicate findings without erasing independent provenance.
 2. Identifies convergence only among genuinely independent reviewers.
+   Cross-references pre-gate OCR findings against reviewer findings: overlap
+   between the pre-gate and any independent reviewer is a strong signal. Agreement
+   between the two OCR passes is the same engine and is NOT convergence; only
+   agreement between the OCR reviewer and a Claude reviewer counts.
 3. Verifies file:line evidence against the frozen head.
 4. Reproduces behavior with disposable probes when proportionate.
 5. Verifies external claims against current primary sources.
@@ -270,6 +339,12 @@ The provisional ledger stays local. Only a verified public-safe consolidation
 belongs in the PR — remove private paths, raw reviewer text, internal continuity
 details, unsupported severity claims, and unpublished project information.
 
+Automated pre-gate comments are exempt only from verification before posting.
+They still require orchestrator sanitization to remove personal information,
+private paths, internal continuity details, and unpublished project information.
+They post before triage as a distinct, clearly-labeled unverified class. They are
+not the public-safe summary and do not count as verified findings.
+
 ### Named failure modes
 
 - **Confidently wrong about the world.** A reviewer asserts a false or stale
@@ -286,6 +361,8 @@ details, unsupported severity claims, and unpublished project information.
   approves the batch.
 - **Live-state probing.** Verification modifies or exposes real user data instead
   of disposable fixtures.
+- **OCR self-agreement.** The parent counts two same-engine OCR passes (pre-gate
+  broad and slot-3 narrow) as convergence. It is not independent.
 
 ## Model-tier economics for reviewers
 
